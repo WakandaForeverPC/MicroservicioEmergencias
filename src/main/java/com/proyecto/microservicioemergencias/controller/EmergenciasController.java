@@ -1,24 +1,38 @@
 package com.proyecto.microservicioemergencias.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.proyecto.microservicioemergencias.Unidad;
+import com.proyecto.microservicioemergencias.UnidadServicio;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 
 @RestController
 @RequestMapping("/emergencias")
 public class EmergenciasController {
 
-    @GetMapping
-    public String obtenerEmergencias() {
-        // Lógica para obtener información de emergencias
-        return "Información de emergencias";
+    @Autowired
+    private UnidadServicio unidadServicio;
+
+    @GetMapping("/unidades")
+    public Flux<Unidad> obtenerUnidadesCercanas() {
+        return unidadServicio.getUnits();
     }
 
     @PostMapping
     public String crearEmergencia(@RequestBody String nuevaEmergencia) {
-        // Lógica para crear nueva información de emergencias
-        return "Nueva emergencia creada";
+        // Lógica para manejar la emergencia (simulación)
+        return "Nueva emergencia creada: " + nuevaEmergencia;
+    }
+
+    @PostMapping("/alerta")
+    public String enviarAlerta(@RequestBody String alerta) {
+        // Lógica para manejar la alerta (simulación)
+        return "Alerta enviada: " + alerta;
+    }
+
+    @PostMapping("/rescatar")
+    public String iniciarRescate(@RequestBody String ubicacion) {
+        // Lógica para simular rescate
+        return "Dron desplegado hacia la ubicación: " + ubicacion;
     }
 }
