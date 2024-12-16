@@ -3,36 +3,26 @@ package com.proyecto.microservicioemergencias.controller;
 import com.proyecto.microservicioemergencias.Unidad;
 import com.proyecto.microservicioemergencias.UnidadServicio;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Flux;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-@RestController
-@RequestMapping("/emergencias")
+import java.util.List;
+
+@Controller
 public class EmergenciasController {
+
+    @GetMapping("/emergencias")
+    public String showEmergencies() {
+        return "board-emergencias";
+    }
 
     @Autowired
     private UnidadServicio unidadServicio;
 
-    @GetMapping("/unidades")
-    public Flux<Unidad> obtenerUnidadesCercanas() {
-        return unidadServicio.getUnits();
-    }
-
-    @PostMapping
-    public String crearEmergencia(@RequestBody String nuevaEmergencia) {
-        // Lógica para manejar la emergencia (simulación)
-        return "Nueva emergencia creada: " + nuevaEmergencia;
-    }
-
-    @PostMapping("/alerta")
-    public String enviarAlerta(@RequestBody String alerta) {
-        // Lógica para manejar la alerta (simulación)
-        return "Alerta enviada: " + alerta;
-    }
-
-    @PostMapping("/rescatar")
-    public String iniciarRescate(@RequestBody String ubicacion) {
-        // Lógica para simular rescate
-        return "Dron desplegado hacia la ubicación: " + ubicacion;
+    @GetMapping("/emergencias/unidades")
+    @ResponseBody
+    public List<Unidad> getUnidades() {
+        return unidadServicio.getUnits().collectList().block();
     }
 }
