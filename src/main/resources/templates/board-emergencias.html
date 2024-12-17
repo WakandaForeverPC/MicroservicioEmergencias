@@ -1,19 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emergency Management System</title>
+    <title>Sistema de Gestión Emergencias</title>
     <link rel="stylesheet" href="/emergencias/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<h1>Emergency Management System</h1>
-<div id="board-emergencias" class="board"></div>
-<div id="vehicles">
-    <h2>List of Vehicles</h2>
-    <ul id="vehicle-list">
-        <!-- Vehicles will be inserted here by JavaScript -->
-    </ul>
+<h1><i class="fas fa-hospital"></i>Sistema de Gestión Emergencias</h1>
+<div class="container">
+    <div class="chart-container">
+        <canvas id="bedOccupancyChart"></canvas>
+    </div>
+    <div class="patient-list">
+        <h2><i class="fas fa-users"></i>Lista de Pacientes</h2>
+        <ul id="patient-list">
+            <!-- Patients will be inserted here by JavaScript -->
+        </ul>
+    </div>
+    <div class="admit-patient">
+        <h2><i class="fas fa-user-plus"></i>Admitir Nuevo Paciente</h2>
+        <form id="admit-patient-form">
+            <input type="text" id="patient-name" placeholder="Nombre del Paciente" required>
+            <input type="number" id="patient-age" placeholder="Edad" required>
+            <input type="text" id="patient-nationality" placeholder="Nacionalidad" required>
+            <button type="submit"><i class="fas fa-check"></i> Admitir</button>
+        </form>
+    </div>
 </div>
 <script src="/emergencias/script.js"></script>
 </body>

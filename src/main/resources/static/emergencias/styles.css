@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
+    background-color: #f8f9fa;
+    color: #343a40;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,90 +14,38 @@ body {
 
 h1 {
     margin-top: 20px;
-}
-
-.board {
-    display: grid;
-    grid-template-columns: repeat(9, 70px);
-    grid-template-rows: repeat(7, 70px);
-    gap: 5px;
-    background-color: #aaa;
-    margin-top: 20px;
-}
-
-.cell {
-    background-color: #c4c4c4;
+    color: #007bff;
     display: flex;
-    justify-content: center;
     align-items: center;
-    position: relative;
 }
 
-.horizontal-road, .vertical-road, .intersection-road {
-    background-color: #333;
+h1 i {
+    margin-right: 10px;
 }
 
-.horizontal-road::before, .vertical-road::before, .intersection-road::before, .intersection-road::after {
-    content: '';
-    position: absolute;
-}
-
-.horizontal-road::before {
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: repeating-linear-gradient(to right, white, white 10px, transparent 10px, transparent 20px);
-    transform: translateY(-50%);
-}
-
-.vertical-road::before {
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 4px;
-    background: repeating-linear-gradient(to bottom, white, white 10px, transparent 10px, transparent 20px);
-    transform: translateX(-50%);
-}
-
-.intersection-road::before {
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: repeating-linear-gradient(to right, white, white 10px, transparent 10px, transparent 20px);
-    transform: translateY(-50%);
-}
-
-.intersection-road::after {
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 4px;
-    background: repeating-linear-gradient(to bottom, white, white 10px, transparent 10px, transparent 20px);
-    transform: translateX(-50%);
-}
-
-.unit {
-    background-color: red;
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
-    text-align: center;
-}
-
-#vehicles {
-    margin-top: 20px;
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 90%;
-    max-width: 600px;
+    max-width: 800px;
     background: white;
-    padding: 1rem;
+    padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
-h2 {
-    color: #007bff;
+.chart-container {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+.patient-list, .admit-patient {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
 }
 
 ul {
@@ -105,4 +56,34 @@ ul {
 li {
     padding: 0.5rem 0;
     border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+}
+
+li i {
+    margin-right: 10px;
+    color: #dc3545; /* Changed to red */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input, button {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #dc3545; /* Changed to red */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #c82333; /* Darker red */
 }
