@@ -1,22 +1,22 @@
 package com.proyecto.microservicioemergencias;
 
-public class Unidad {
-    private String nombre;
+public class Rescate {
+    private String descripcion;
     private double latitude;
     private double longitude;
 
-    public Unidad(String nombre, double latitude, double longitude) {
-        this.nombre = nombre;
+    public Rescate(String descripcion, double latitude, double longitude) {
+        this.descripcion = descripcion;
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public double getLatitude() {

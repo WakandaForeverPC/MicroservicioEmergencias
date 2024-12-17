@@ -1,28 +1,40 @@
 package com.proyecto.microservicioemergencias.controller;
 
-import com.proyecto.microservicioemergencias.Unidad;
-import com.proyecto.microservicioemergencias.UnidadServicio;
+import com.proyecto.microservicioemergencias.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 
-import java.util.List;
-
-@Controller
+@RestController
 public class EmergenciasController {
-
-    @GetMapping("/emergencias")
-    public String showEmergencies() {
-        return "board-emergencias";
-    }
 
     @Autowired
     private UnidadServicio unidadServicio;
 
+    @Autowired
+    private AlertaServicio alertaServicio;
+
+    @Autowired
+    private RescateServicio rescateServicio;
+
+    @GetMapping("/salud")
+    public String showEmergencies() {
+        return "board-emergencias";
+    }
+
     @GetMapping("/emergencias/unidades")
-    @ResponseBody
-    public List<Unidad> getUnidades() {
-        return unidadServicio.getUnits().collectList().block();
+    public Flux<Unidad> getUnidades() {
+        return unidadServicio.getUnits();
+    }
+
+    @GetMapping("/emergencias/alertas")
+    public Flux<Alerta> getAlertas() {
+        return alertaServicio.getAlertas();
+    }
+
+    @GetMapping("/emergencias/rescates")
+    public Flux<Rescate> getRescates() {
+        return rescateServicio.getRescates();
     }
 }
