@@ -3,7 +3,6 @@ package com.proyecto.microservicioemergencias;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
-import java.time.Duration;
 import java.util.List;
 
 @Service
@@ -14,7 +13,6 @@ public class AlertaServicio {
     );
 
     public Flux<Alerta> getAlertas() {
-        return Flux.fromIterable(alertas)
-                .delayElements(Duration.ofSeconds(2));
+        return Flux.fromIterable(alertas);
     }
 }

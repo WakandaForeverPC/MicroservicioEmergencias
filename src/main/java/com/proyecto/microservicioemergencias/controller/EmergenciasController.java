@@ -1,40 +1,43 @@
 package com.proyecto.microservicioemergencias.controller;
 
 import com.proyecto.microservicioemergencias.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-import reactor.core.publisher.Flux;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@RestController
+import java.util.List;
+
+@Controller
 public class EmergenciasController {
 
-    @Autowired
-    private UnidadServicio unidadServicio;
+    private final EmergencyVehicleService vehicleService;
+    private final AlertaServicio alertaServicio;
+    private final RescateServicio rescateServicio;
 
-    @Autowired
-    private AlertaServicio alertaServicio;
-
-    @Autowired
-    private RescateServicio rescateServicio;
-
-    @GetMapping("/salud")
-    public String showEmergencies() {
-        return "board-emergencias";
+    public EmergenciasController(EmergencyVehicleService vehicleService, AlertaServicio alertaServicio, RescateServicio rescateServicio) {
+        this.vehicleService = vehicleService;
+        this.alertaServicio = alertaServicio;
+        this.rescateServicio = rescateServicio;
     }
 
-    @GetMapping("/emergencias/unidades")
-    public Flux<Unidad> getUnidades() {
-        return unidadServicio.getUnits();
+    @GetMapping("/emergencias/vehiculos")
+    public List<EmergencyVehicle> getVehicles() {
+        vehicleService.moveVehicles();
+        return vehicleService.getVehicles();
     }
 
     @GetMapping("/emergencias/alertas")
-    public Flux<Alerta> getAlertas() {
-        return alertaServicio.getAlertas();
+    public List<Alerta> getAlertas() {
+        return alertaServicio.getAlertas().collectList().block();
     }
 
     @GetMapping("/emergencias/rescates")
-    public Flux<Rescate> getRescates() {
-        return rescateServicio.getRescates();
+    public List<Rescate> getRescates() {
+        return rescateServicio.getRescates().collectList().block();
+    }
+
+    @RequestMapping("/emergencias")
+    public String getEmergenciasPage() {
+        return "board-emergencias";
     }
 }
