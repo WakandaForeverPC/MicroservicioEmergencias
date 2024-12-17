@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Gestión Emergencias</title>
-    <link rel="stylesheet" href="/emergencias/styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Gestión Emergencias</title>
+  <link rel="stylesheet" href="/emergencias/styles.css">
 </head>
 <body>
-<h1><i class="fas fa-hospital"></i>Sistema de Gestión Emergencias</h1>
+<h1>Sistema de Gestión Emergencias</h1>
 <div class="container">
-    <div class="chart-container">
-        <canvas id="bedOccupancyChart"></canvas>
-    </div>
-    <div class="patient-list">
-        <h2><i class="fas fa-users"></i>Lista de Pacientes</h2>
-        <ul id="patient-list">
-            <!-- Patients will be inserted here by JavaScript -->
-        </ul>
-    </div>
-    <div class="admit-patient">
-        <h2><i class="fas fa-user-plus"></i>Admitir Nuevo Paciente</h2>
-        <form id="admit-patient-form">
-            <input type="text" id="patient-name" placeholder="Nombre del Paciente" required>
-            <input type="number" id="patient-age" placeholder="Edad" required>
-            <input type="text" id="patient-nationality" placeholder="Nacionalidad" required>
-            <button type="submit"><i class="fas fa-check"></i> Admitir</button>
-        </form>
-    </div>
+  <div id="map-container">
+    <h2>Mapa de Unidades de Emergencia</h2>
+    <div id="board" class="board"></div>
+  </div>
+  <div class="unit-list">
+    <h2>Unidades de Emergencia</h2>
+    <ul id="unit-list">
+      <!-- Units will be inserted here by JavaScript -->
+    </ul>
+  </div>
+  <div class="alert-list">
+    <h2>Alertas de Emergencia</h2>
+    <ul id="alert-list">
+      <!-- Alerts will be inserted here by JavaScript -->
+    </ul>
+  </div>
+  <div class="rescue-list">
+    <h2>Rescates Inteligentes</h2>
+    <ul id="rescue-list">
+      <!-- Rescues will be inserted here by JavaScript -->
+    </ul>
+  </div>
 </div>
 <script src="/emergencias/script.js"></script>
 </body>
