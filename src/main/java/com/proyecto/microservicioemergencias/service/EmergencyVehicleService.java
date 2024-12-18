@@ -13,7 +13,7 @@ public class EmergencyVehicleService {
 
     public EmergencyVehicleService() {
         vehicles = new ArrayList<>();
-        vehicles.add(new EmergencyVehicle("vehicle1", 0, 0, "ambulancia"));
+        vehicles.add(new EmergencyVehicle("vehicle1", 6, 6, "ambulancia"));
         vehicles.add(new EmergencyVehicle("vehicle2", 2, 4, "bomberos"));
     }
 
