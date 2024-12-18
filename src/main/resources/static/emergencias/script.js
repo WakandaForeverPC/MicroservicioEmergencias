@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    setInterval(fetchAndUpdateVehicles, 500);
-    setInterval(fetchAndDisplayAlerts, 100);
-    setInterval(fetchAndDisplayRescues, 100);
+    fetchAndUpdateVehicles();
+    fetchAndDisplayAlerts();
+    fetchAndDisplayRescues();
 });
