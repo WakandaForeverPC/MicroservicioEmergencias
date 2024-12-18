@@ -1,13 +1,20 @@
 package com.proyecto.microservicioemergencias.controller;
 
-import com.proyecto.microservicioemergencias.*;
-import org.springframework.stereotype.Controller;
+import com.proyecto.microservicioemergencias.model.Alerta;
+import com.proyecto.microservicioemergencias.model.EmergencyVehicle;
+import com.proyecto.microservicioemergencias.model.Rescate;
+import com.proyecto.microservicioemergencias.service.AlertaServicio;
+import com.proyecto.microservicioemergencias.service.EmergencyVehicleService;
+import com.proyecto.microservicioemergencias.service.RescateServicio;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/emergencias")
 public class EmergenciasController {
 
     private final EmergencyVehicleService vehicleService;
@@ -20,24 +27,22 @@ public class EmergenciasController {
         this.rescateServicio = rescateServicio;
     }
 
-    @GetMapping("/emergencias/vehiculos")
+    @GetMapping("/vehiculos")
+    @ResponseBody
     public List<EmergencyVehicle> getVehicles() {
         vehicleService.moveVehicles();
         return vehicleService.getVehicles();
     }
 
-    @GetMapping("/emergencias/alertas")
+    @GetMapping("/alertas")
+    @ResponseBody
     public List<Alerta> getAlertas() {
         return alertaServicio.getAlertas().collectList().block();
     }
 
-    @GetMapping("/emergencias/rescates")
+    @GetMapping("/rescates")
+    @ResponseBody
     public List<Rescate> getRescates() {
         return rescateServicio.getRescates().collectList().block();
-    }
-
-    @RequestMapping("/emergencias")
-    public String getEmergenciasPage() {
-        return "board-emergencias";
     }
 }

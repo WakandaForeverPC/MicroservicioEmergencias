@@ -1,4 +1,4 @@
-package com.proyecto.microservicioemergencias;
+package com.proyecto.microservicioemergencias.service;
 
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -17,6 +17,7 @@ public class EmergencyWebSocketService {
 
     @Scheduled(fixedRate = 2000)
     public void sendUpdates() {
+        vehicleService.moveVehicles();
         template.convertAndSend("/topic/updates", vehicleService.getVehicles());
     }
 }

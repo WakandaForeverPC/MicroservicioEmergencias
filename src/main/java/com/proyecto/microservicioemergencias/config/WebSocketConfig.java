@@ -1,4 +1,4 @@
-package com.proyecto.microservicioemergencias;
+package com.proyecto.microservicioemergencias.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

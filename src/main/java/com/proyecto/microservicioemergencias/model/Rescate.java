@@ -1,15 +1,15 @@
-package com.proyecto.microservicioemergencias;
+package com.proyecto.microservicioemergencias.model;
 
 public class Rescate {
     private String descripcion;
-    private double latitude;
-    private double longitude;
+    private int x;
+    private int y;
     private String tecnologia; // Tecnología utilizada (drones, vehículos autónomos, sensores)
 
-    public Rescate(String descripcion, double latitude, double longitude, String tecnologia) {
+    public Rescate(String descripcion, int x, int y, String tecnologia) {
         this.descripcion = descripcion;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.x = x;
+        this.y = y;
         this.tecnologia = tecnologia;
     }
 
@@ -17,12 +17,12 @@ public class Rescate {
         return descripcion;
     }
 
-    public double getLatitude() {
-        return latitude;
+    public int getX() {
+        return x;
     }
 
-    public double getLongitude() {
-        return longitude;
+    public void setX(int x) {
+        this.x = x;
     }
 
     public String getTecnologia() {
@@ -33,15 +33,16 @@ public class Rescate {
         this.descripcion = descripcion;
     }
 
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
+    public int getY() {
+        return y;
     }
 
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
+    public void setY(int y) {
+        this.y = y;
     }
 
     public void setTecnologia(String tecnologia) {
         this.tecnologia = tecnologia;
     }
 }
+

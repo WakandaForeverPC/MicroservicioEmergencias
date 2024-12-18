@@ -1,5 +1,6 @@
-package com.proyecto.microservicioemergencias;
+package com.proyecto.microservicioemergencias.service;
 
+import com.proyecto.microservicioemergencias.model.Alerta;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
@@ -8,8 +9,8 @@ import java.util.List;
 @Service
 public class AlertaServicio {
     private final List<Alerta> alertas = List.of(
-            new Alerta("Terremoto", 19.432608, -99.133209),
-            new Alerta("Incendio", 19.432608, -99.133209)
+            new Alerta("Terremoto", 0, 0),
+            new Alerta("Incendio", 2, 0)
     );
 
     public Flux<Alerta> getAlertas() {

@@ -1,5 +1,6 @@
-package com.proyecto.microservicioemergencias;
+package com.proyecto.microservicioemergencias.service;
 
+import com.proyecto.microservicioemergencias.model.Rescate;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
@@ -8,8 +9,8 @@ import java.util.List;
 @Service
 public class RescateServicio {
     private final List<Rescate> rescates = List.of(
-            new Rescate("Rescate en edificio colapsado", 19.432608, -99.133209, "drones"),
-            new Rescate("Rescate en incendio forestal", 19.432608, -99.133209, "vehículos autónomos")
+            new Rescate("Rescate en edificio colapsado", 4, 4, "drones"),
+            new Rescate("Rescate en incendio forestal", 6, 6, "vehículos autónomos")
     );
 
     public Flux<Rescate> getRescates() {
